@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ProjectSummary from "./ProjectSummary";
 const ProjectList = (props) => {
   return (
@@ -6,7 +7,12 @@ const ProjectList = (props) => {
       {props.projects &&
         props.projects.map((project) => {
           return (
-            <ProjectSummary project={project} key={project.id}></ProjectSummary>
+            <Link to={"/projects/" + project.id}>
+              <ProjectSummary
+                project={project}
+                key={project.id}
+              ></ProjectSummary>
+            </Link>
           );
         })}
     </div>
