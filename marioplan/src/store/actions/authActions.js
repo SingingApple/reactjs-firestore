@@ -1,6 +1,7 @@
+import firebase from "firebase";
 export const signIn = (credentials) => {
-  return (dispatch, getstate, { getFirebase }) => {
-    const firebase = getFirebase();
+  return (dispatch, getstate) => {
+    console.log(credentials);
     firebase
       .auth()
       .signInWithEmailAndPassword(credentials.email, credentials.password)
@@ -13,8 +14,7 @@ export const signIn = (credentials) => {
   };
 };
 export const signOut = () => {
-  return (dispatch, getState, { getFirebase }) => {
-    const firebase = getFirebase();
+  return (dispatch, getState) => {
     firebase
       .auth()
       .signOut()
@@ -23,3 +23,4 @@ export const signOut = () => {
       });
   };
 };
+export default signIn;

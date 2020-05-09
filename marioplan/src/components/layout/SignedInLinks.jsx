@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import signOut from "../../store/actions/authActions";
+import { signOut } from "../../store/actions/authActions";
 import { NavLink } from "react-router-dom";
 const SignedInLinks = (props) => {
   return (
@@ -19,6 +19,7 @@ const SignedInLinks = (props) => {
     </ul>
   );
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
     signOut: () => dispatch(signOut()),
