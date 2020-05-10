@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
+import { firestoreConnect } from "react-redux-firebase";
 import { connect } from "react-redux";
+import { compose } from "redux";
 const Navbar = (props) => {
   const { auth } = props;
   console.log(auth);
@@ -13,7 +15,7 @@ const Navbar = (props) => {
           MarioPlan
         </Link>
         {auth.uid ? (
-          <SignedInLinks></SignedInLinks>
+          <SignedInLinks initial={props.initials}></SignedInLinks>
         ) : (
           <SignedOutLinks></SignedOutLinks>
         )}
@@ -21,8 +23,10 @@ const Navbar = (props) => {
     </nav>
   );
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  console.log(state);
   return {
+    initials: state.firebase.profile.initials,
     auth: state.firebase.auth,
   };
 };

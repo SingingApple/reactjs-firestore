@@ -13,16 +13,18 @@ const SignedInLinks = (props) => {
       </li>
       <li>
         <NavLink to="/" className="btn btn-floating pink lighten-1">
-          AS
+          {props.initial}
         </NavLink>
       </li>
     </ul>
   );
 };
-
+const mapStateToProps = (state) => {
+  return {};
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     signOut: () => dispatch(signOut()),
   };
 };
-export default connect(null, mapDispatchToProps)(SignedInLinks);
+export default connect(mapStateToProps, mapDispatchToProps)(SignedInLinks);
